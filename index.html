@@ -387,8 +387,20 @@
       });
     }
     render(projects);
-
     
+// Filters
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      chips.forEach(c=>c.classList.remove('active')); ch.classList.add('active');
+      const f = ch.dataset.filter;
+      if(f === 'all') return render(projects);
+      render(projects.filter(p => p.tags.includes(f)));
+    }));
+  </script>
+</body>
+</html>
+    
+
 
 
 
